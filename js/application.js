@@ -16,16 +16,28 @@ $(document).ready(function(){
        $.getJSON(url, function(data) {
         console.log(data);
 
-    //objects title, physical description by collections    
+    //objects title, physical description, contributor by collections    
     var item = data.data[0];
     var description = data.data[0];
+    var contributor = data.data[0].contributor[0].title;
+    var medium = data.data[0].medium[0].type;
+    var mediumtitle = data.data[0].medium[0].title;
+    var significanceStatement = data.data[0].significanceStatement;
+    
     
 
     console.log (item.title);
     console.log (description.physicalDescription);
+    // console.log (contributor[0].title);
+    
+    
 
         $('.title').html (item.title);
         $('.physdesc').html (description.physicalDescription);
+        $('.contributor').html (contributor);
+        $('.medium').html (medium);
+        $('.mediumtitle').html (mediumtitle);
+        $('.significanceStatement').html (significanceStatement);
 
     });
 
