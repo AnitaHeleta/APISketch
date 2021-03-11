@@ -23,21 +23,26 @@ $(document).ready(function(){
     var medium = data.data[0].medium[0].type;
     var mediumtitle = data.data[0].medium[0].title;
     var significanceStatement = data.data[0].significanceStatement;
-    
-    
+    var image = data.data[0]._meta.hasFormat;
+      
 
     console.log (item.title);
     console.log (description.physicalDescription);
-    // console.log (contributor[0].title);
-    
-    
 
+// They dont work in the console//
+
+    // console.log (contributor.title);
+    // console.log (medium[0].type);
+    // console.log (mediumtitle.title);
+    // console.log (significanceStatement.significanceStatement);
+    
         $('.title').html (item.title);
         $('.physdesc').html (description.physicalDescription);
         $('.contributor').html (contributor);
         $('.medium').html (medium);
         $('.mediumtitle').html (mediumtitle);
         $('.significanceStatement').html (significanceStatement);
+        $('.image').html (image);
 
     });
 
