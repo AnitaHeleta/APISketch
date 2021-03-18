@@ -10,40 +10,23 @@ $(document).ready(function(){
 
     //api call 
     //api call is made to all the objects in the NMA of the Aboriginal Collection
-    var url = 'https://data.nma.gov.au/object?limit=&collection=aboriginal&format=simple&apikey=' + key;
-
+    var url = 'https://data.nma.gov.au/object/71110&apikey=' + key;
     
-       $.getJSON(url, function(data) {
-        console.log(data);
+        $.getJSON(url, function(apiData) {
+        console.log(apiData);
+                    
+    $('.title').html (apiData.data[0].title);
+    $('.physdesc').html (apiData.data[0].physicalDescription);
+    $('.contributor').html (apiData.data[0].contributor[0].title);
+    $('.mediumtitle').html (apiData.data[0].medium[0].title);
+    $('.significanceStatement').html (apiData.data[0].significanceStatement);
 
-    //objects title, physical description, contributor by collections    
-    var item = data.data[0];
-    var description = data.data[0];
-    var contributor = data.data[0].contributor[0].title;
-    var medium = data.data[0].medium[0].type;
-    var mediumtitle = data.data[0].medium[0].title;
-    var significanceStatement = data.data[0].significanceStatement;
-    var image = data.data[0]._meta.hasFormat;
-      
-
-    console.log (item.title);
-    console.log (description.physicalDescription);
-
-// They dont work in the console//
-
-    // console.log (contributor.title);
-    // console.log (medium[0].type);
-    // console.log (mediumtitle.title);
-    // console.log (significanceStatement.significanceStatement);
-    
-        $('.title').html (item.title);
-        $('.physdesc').html (description.physicalDescription);
-        $('.contributor').html (contributor);
-        $('.medium').html (medium);
-        $('.mediumtitle').html (mediumtitle);
-        $('.significanceStatement').html (significanceStatement);
-        $('.image').html (image);
-
-    });
 
 });
+
+});
+
+
+
+
+
