@@ -6,3 +6,12 @@ body {background: white;
 
 h2 {color: brown;}
 
+h3 {
+ color: green;
+}
+
+img.thumbnail {
+    width: 200px;
+    height: 200px;
+    border: aquamarine;
+} 
