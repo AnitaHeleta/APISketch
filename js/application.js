@@ -1,6 +1,12 @@
 function displayData(apiData) {
-    for (i = 0; i < apiData.data.length; i++) {
-        var r = apiData.data[i]
+    $('.item-container').empty();
+
+    if (apiData.data.length === 0) {
+        $('.item-container').append('<p>No Results found</p>');
+        return;
+    }
+
+    for (const r of apiData.data) {
         var item = $(`<div class="item">
             <h2>${r.title}</h2>
             <h3>Description</h3>
@@ -19,6 +25,7 @@ function displayData(apiData) {
         }
         $('.item-container').append(item);
     }
+
     if (apiData.links && apiData.links.next) {
         loadDataFrom(apiData.links.next);
     }
@@ -33,17 +40,19 @@ function extractThumbnail(row) {
     return undefined;
 }
 
-function loadDataFrom(urlPath) {
-    var searchUrl = 'https://data.nma.gov.au/' + urlPath;
+function loadDataFrom(path) {
+    var searchUrl = 'https://data.nma.gov.au/' + path;
     $.getJSON(searchUrl, displayData);
 }
 
 function loadDataForSearch(query) {
-    var url = 'object?text=' + query;
-    loadDataFrom(url)
+    var path = 'object?text=' + query;
+    loadDataFrom(path)
 }
 
-$(document).ready(function () {
-    var searchQuery = 'aboriginal';
-    loadDataForSearch(searchQuery);
+$(document).on("keypress", "input", function (e) {
+    if (e.key == 'Enter') {
+        var searchQuery = $(this).val();
+        loadDataForSearch(searchQuery);
+    }
 });
