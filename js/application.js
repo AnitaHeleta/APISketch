@@ -87,7 +87,7 @@ function getObjectPath(query) {
 function getLocationName(lat, long) {
     // my OpenCage Geocoder API key
     var geoApi = '33e3b3aefbaa415fa6393bcb1a1831e5';
-    var geocodeUrl = `http://api.opencagedata.com/geocode/v1/json?q=${lat},${long}&key=${geoApi}`;
+    var geocodeUrl = `https://api.opencagedata.com/geocode/v1/json?q=${lat},${long}&key=${geoApi}`;
     $.getJSON(geocodeUrl, function (locationData) {
         var suburb = locationData.results[0].components.suburb;
         localStorage.setItem('suburb', suburb);
