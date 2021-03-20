@@ -4,6 +4,12 @@ body {background: white;
     
 }
 
+.item {
+width : 30% ;
+float : left ;
+margin : 1% ;
+}
+
 h2 {color: brown;}
 
 h3 {
@@ -17,6 +23,7 @@ img.thumbnail {
 } 
 
 #myInput {
+    width: 65%;
     font-size: 16px; /* Increase font-size */
     padding: 12px 20px 12px 40px; /* Add some padding */
     border: 1px solid #ddd; /* Add a grey border */
