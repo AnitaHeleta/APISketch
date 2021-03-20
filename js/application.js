@@ -19,6 +19,11 @@ function displayData(apiData) {
         if (r.significanceStatement) {
             item.append('<h3>Significance Statement</h3> <p>' + r.significanceStatement + '</p>');
         };
+
+        if (r.acknowledgement) {
+            item.append('<h3>Acknowledgement</h3> <p>' + r.acknowledgement + '</p>');
+        };
+
         var startDate = extractStartDate(r);
         if (startDate) {
             item.append('<h3>Period</h3> <p>' + startDate + '</p>');
@@ -59,14 +64,39 @@ function loadDataFrom(path) {
 
 function searchByTitle(query) {
     $('.item-container').empty();
-    var path = 'object?text=' + query;
+    var path = getObjectPath(`text=${query}`);
     loadDataFrom(path)
 }
 
 function searchByCollection(query) {
     $('.item-container').empty();
-    var path = 'object?collection=' + query;
+    var path = getObjectPath(`collection=${query}`);
     loadDataFrom(path)
+}
+
+function searchByLocation(query) {
+    $('.item-container').empty();
+    var path = getObjectPath(`spatial=${query}`);
+    loadDataFrom(path)
+}
+
+function getObjectPath(query) {
+    return `object?format=simple&apikey=4SDwv6pd4DyiBrJ5xu2PnVUmaLhIogIk&${query}`
+}
+
+function getLocationName(lat, long) {
+    // my OpenCage Geocoder API key
+    var geoApi = '33e3b3aefbaa415fa6393bcb1a1831e5';
+    var geocodeUrl = `http://api.opencagedata.com/geocode/v1/json?q=${lat},${long}&key=${geoApi}`;
+    $.getJSON(geocodeUrl, function (locationData) {
+        var suburb = locationData.results[0].components.suburb;
+        localStorage.setItem('suburb', suburb);
+    });
+}
+
+function findNearMe(){
+    var suburb = localStorage.getItem('suburb');
+    searchByLocation(suburb)
 }
 
 $(document).on("keypress", "input", function (e) {
@@ -78,5 +108,13 @@ $(document).on("keypress", "input", function (e) {
         } else if (searchBy === 'collection') {
             searchByCollection(searchQuery);
         }
+    }
+});
+
+$(document).ready(function () {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(pos){
+            getLocationName(pos.coords.latitude, pos.coords.longitude)
+        });
     }
 });
