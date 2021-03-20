@@ -45,10 +45,10 @@ function loadDataFrom(path) {
     $.getJSON(searchUrl, displayData);
 }
 
-// function loadDataForSearch(query) {
-//     var path = 'object?text=' + query;
-//     loadDataFrom(path)
-// }
+function loadDataForSearch(query) {
+    var path = 'object?text=' + query;
+    loadDataFrom(path)
+}
 
 $(document).on("keypress", "input", function (e) {
     if (e.key == 'Enter') {
