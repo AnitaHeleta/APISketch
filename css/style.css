@@ -1,31 +1,109 @@
-html
-body {background: white;
-    color: grey;
-    
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+
+html {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/National-Museum-of-Australia.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    background-attachment:scroll;
 }
 
-.item {
+
+body {
+    font-family: 'Playfair Display', sans-serif;
+    font-size: 20px;
+}
+
+.container {
+
+    flex-direction: column;
+}
+
+/* .item {
 width : 30% ;
 float : left ;
 margin : 1% ;
+
+} */
+
+
+h1 {
+    font-size: 150%;
+    font-weight: 100;
+    padding-top: 50px;
+    color: grey;
+    margin-top: auto;
+    margin-bottom: 20px;
 }
 
-h2 {color: brown;}
+h2 {color: rgb(134, 133, 133);
+    font-size: 130%;
+    font-weight:500; 
+}
 
 h3 {
- color: green;
+ color: rgb(10, 155, 163);
+ font-size: 100%;
+ font-weight:500;
+
+}
+
+p { color: grey;
+    font-size: 80%; 
+    line-height: 150%;
+    font-weight: 300;
+    font-family: sans-serif;
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+    float: center;
+    margin-top: 20px;
+}
+
+
+path {
+    color: rgb(10, 155, 163);
+    display: flex; 
+}
+
+label {
+    color: rgb(10, 155, 163);
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 80%;
+}
+
+button {
+    background: rgb(10, 155, 163);
+    color: white;
+    padding: 5px 10px;
+    border-color: white;
+    border-radius: 100px;
+    font-size: 80%;
 }
 
 img.thumbnail {
     width: 200px;
     height: 200px;
-    border: aquamarine;
+    border: 2px solid rgb(4, 75, 78);
+    padding: 15px;
+
 } 
 
 #myInput {
     width: 65%;
-    font-size: 16px; /* Increase font-size */
+    font-weight: lighter;
+    font-style: italic;
+    font-size: 70%; /* Increase font-size */
     padding: 12px 20px 12px 40px; /* Add some padding */
     border: 1px solid #ddd; /* Add a grey border */
-    margin-bottom: 12px; /* Add some space below the input */
-  }
+    margin-bottom: 12px; 
+} 
