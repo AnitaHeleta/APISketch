@@ -6,7 +6,7 @@
 
 Student: U3148005
 
-Website: https://anitah3.sg-host.com  
+Website: http://anitah3.sg-host.com  
 
 Github: https://github.com/AnitaHeleta/APISketch
 
