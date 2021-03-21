@@ -7,33 +7,34 @@
     <script src="https://cdn.jsdelivr.net/npm/underscore@1.12.1/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <script src="./js/application.js"></script>
-     <title>National Musseum of AUstralia</title>
+    <title>National Musseum of AUstralia</title>
 </head>
 
 <body>
 
-<header>
-    <img src="./images/National-Museum-of-Australia-Logo-Font.jpg" alt="National-Museum-of-Australia-Logo-Font" class="logo">
+    <header>
+        <img src="./images/National-Museum-of-Australia-Logo-Font.jpg" alt="National-Museum-of-Australia-Logo-Font"
+            class="logo">
 
-    
-</header>
+
+    </header>
 
     <h1>Welcome to National Museum of Australia <strong>API Search</strong></h1>
-   
+
     <i class="fas fa-search"></i>
     <input type="text" id="myInput" placeholder="please enter your search and press enter...">
     <input type="radio" id="title" name="searchBy" value="title" checked>
     <label for="title">by title</label>
     <input type="radio" id="collection" name="searchBy" value="collection">
     <label for="collection">by collection</label>
-    <button onclick="findNearMe()">Find Near Me</button> 
+    <button onclick="findNearMe()">Find Near Me</button>
 
-<container>
+    <div class="item-container">
+    </div>
 
-    <div class="item-container"></div>
 
-</container>
+</body>
 
-    </body>
+
 
 </html>

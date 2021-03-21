@@ -4,9 +4,26 @@ function displayData(apiData) {
         $('.item-container').append('<p>No Results found</p>');
         return;
     }
+    var chunkedResults = _.chunk(apiData.data, 3)
+    for (const resultsChunk of chunkedResults) {
+        var section = buildSection(resultsChunk);
+        $('.item-container').append(section);
+    }
 
-    for (const r of apiData.data) {
-        var item = $(`<div class="item">
+    if (apiData.links && apiData.links.next) {
+        loadDataFrom(apiData.links.next);
+    }
+}
+
+function buildSection(results){
+    var s =  $('<div class="section">');
+    var items = _.map(results, buildIndividualResult);
+    s.append(items);
+    return s;
+}
+
+function buildIndividualResult(r) {
+    var item = $(`<div class="item col span_1_of_3">
             <h2>${r.title}</h2>
             <h3>Description</h3>
             <p class="physdesc">${r.physicalDescription}</p>
@@ -16,28 +33,23 @@ function displayData(apiData) {
             <p class="collection"> ${r.collection.title}</p>
         </div>`);
 
-        if (r.significanceStatement) {
-            item.append('<h3>Significance Statement</h3> <p>' + r.significanceStatement + '</p>');
-        };
+    if (r.significanceStatement) {
+        item.append('<h3>Significance Statement</h3> <p>' + r.significanceStatement + '</p>');
+    };
 
-        if (r.acknowledgement) {
-            item.append('<h3>Acknowledgement</h3> <p>' + r.acknowledgement + '</p>');
-        };
+    if (r.acknowledgement) {
+        item.append('<h3>Acknowledgement</h3> <p>' + r.acknowledgement + '</p>');
+    };
 
-        var startDate = extractStartDate(r);
-        if (startDate) {
-            item.append('<h3>Period</h3> <p>' + startDate + '</p>');
-        };
-        var thumbnail = extractThumbnail(r);
-        if (thumbnail) {
-            item.append('<img src="' + thumbnail + '" class="thumbnail">');
-        }
-        $('.item-container').append(item);
+    var startDate = extractStartDate(r);
+    if (startDate) {
+        item.append('<h3>Period</h3> <p>' + startDate + '</p>');
+    };
+    var thumbnail = extractThumbnail(r);
+    if (thumbnail) {
+        item.append('<img src="' + thumbnail + '" class="thumbnail">');
     }
-
-    if (apiData.links && apiData.links.next) {
-        loadDataFrom(apiData.links.next);
-    }
+    return item;
 }
 
 function extractStartDate(row) {
@@ -81,7 +93,7 @@ function searchByLocation(query) {
 }
 
 function getObjectPath(query) {
-    return `object?format=simple&apikey=4SDwv6pd4DyiBrJ5xu2PnVUmaLhIogIk&${query}`
+    return `object?limit=51&format=simple&apikey=4SDwv6pd4DyiBrJ5xu2PnVUmaLhIogIk&${query}`
 }
 
 function getLocationName(lat, long) {
@@ -94,7 +106,7 @@ function getLocationName(lat, long) {
     });
 }
 
-function findNearMe(){
+function findNearMe() {
     var suburb = localStorage.getItem('suburb');
     searchByLocation(suburb)
 }
@@ -113,7 +125,7 @@ $(document).on("keypress", "input", function (e) {
 
 $(document).ready(function () {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(pos){
+        navigator.geolocation.getCurrentPosition(function (pos) {
             getLocationName(pos.coords.latitude, pos.coords.longitude)
         });
     }
