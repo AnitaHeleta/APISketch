@@ -86,9 +86,9 @@ function searchByCollection(query) {
     loadDataFrom(path)
 }
 
-function searchByLocation(query) {
+function searchByLocation(suburb, city) {
     $('.item-container').empty();
-    var path = getObjectPath(`spatial=${query}`);
+    var path = getObjectPath(`spatial=${suburb}&spatial=${city}`);
     loadDataFrom(path)
 }
 
@@ -102,13 +102,20 @@ function getLocationName(lat, long) {
     var geocodeUrl = `https://api.opencagedata.com/geocode/v1/json?q=${lat},${long}&key=${geoApi}`;
     $.getJSON(geocodeUrl, function (locationData) {
         var suburb = locationData.results[0].components.suburb;
-        localStorage.setItem('suburb', suburb);
+        var city = locationData.results[0].components.city;
+        var state = locationData.results[0].components.city;
+        var city = locationData.results[0].components.state;
+        var country = locationData.results[0].components.country;
+        console.log(locationData.results[0].components);
+        localStorage.setItem('suburb', `${suburb}, ${city}, ${state}, ${country}`);
+        localStorage.setItem('city', `${city}, ${state}, ${country}`);
     });
 }
 
 function findNearMe() {
     var suburb = localStorage.getItem('suburb');
-    searchByLocation(suburb)
+    var city = localStorage.getItem('city');
+    searchByLocation(suburb, city)
 }
 
 $(document).on("keypress", "input", function (e) {
