@@ -70,7 +70,13 @@ header {
     transform: translate(-50%, -50%);
 }
 
-/*MAIN NAVIGATION*/
+.logo-black {
+    display: none;
+    height: 50px;
+    width: auto;
+    float: left;
+    margin: 5px 0;
+}
 
 .main-nav {
     float: right;
@@ -102,6 +108,31 @@ header {
     border-bottom: 2px solid #e67e22;
 }
 
+/*sticky nav*/
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 2px rgb(231, 227, 227);
+    z-index: 9999;
+}
+
+.sticky .main-nav {
+    margin-top: 18px;
+}
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited {
+    padding: 16px 0px;
+    color: #555;
+}
+
+.sticky .logo-black {
+    display: block;
+}
+
 h1 {
     font-size: 350%;
     text-transform: uppercase;
@@ -120,7 +151,7 @@ h2 {
     font-size: 180%;
     word-spacing: 2px;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 80px;
     letter-spacing: 1px;
 }
 
@@ -139,6 +170,7 @@ h3 {
     font-size: 100%;
     font-weight: 300;
     text-transform: uppercase;
+    
 }
 
 p {
@@ -147,13 +179,6 @@ p {
     line-height: 150%;
     font-weight: 300;
     font-family: sans-serif;
-}
-
-.logo {
-    height: 80px;
-    width: auto;
-    float: center;
-    margin-top: 20px;
 }
 
 
@@ -169,16 +194,6 @@ div.section {
     border-bottom: none;
 
 }
-
-button {
-    background: none;
-    border: solid #e67e22;
-    color: whitesmoke;
-    padding: 8px 10px;
-    border-radius: 100px;
-    font-size: 80%;
-}
-
 
 #myInput {
     width: 50%;
@@ -224,9 +239,6 @@ path {
 
 /*ON THE MAP SECTION*/
 
-.section-map {
-    background-color: red;
-}
 
 /*IMAGES*/
 
@@ -234,7 +246,7 @@ path {
 .imageone{
     max-width: 100%;
     height: auto;
-    background-color: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    background-color: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
     
 }
 .imagetwo {
@@ -244,8 +256,10 @@ path {
 }
 
 
+
 /*BUTTON*/
 
+button,
 .btn:link,
 .btn:visited,
 input[type=submit] {
@@ -257,6 +271,7 @@ input[type=submit] {
     transform: background-color 0.2s, border 0.2s, color 0.2s;
 }
 
+button,
 .btn-full:link,
 .btn-full:visited,
 input[type=submit] {
@@ -266,12 +281,14 @@ input[type=submit] {
     margin-right: 15px;
 }
 
+button,
 .btn-ghost:link,
 .btn-ghost:visited {
     border: 1px solid #e67e22;
     color: #e67e22;
 }
 
+button,
 .btn:hover,
 .btn:active,
 input[type=submit]:hover,
@@ -280,6 +297,7 @@ input[type=submit]:active {
 
 }
 
+button,
 .btn-full:hover,
 .btn-full, active,
 input[type=submit] {
@@ -287,6 +305,7 @@ input[type=submit] {
 
 }
 
+button,
 .btn-ghost:hover,
 .btn-ghost:active {
     border: 1px solid #e67e22;
