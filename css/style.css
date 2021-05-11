@@ -10,8 +10,6 @@
 
 html {
     background-color: #fff;
-    color: #555;
-    font-weight: 300;
     font-size: 20px;
     text-rendering: optimizeLegibility;
 
@@ -69,6 +67,7 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 
 .logo-black {
     display: none;
@@ -147,12 +146,10 @@ h1 {
 h2 {
     color: rgb(134, 133, 133);
     text-transform: uppercase;
-    font-weight: 300;
+    font-weight: 350;
     font-size: 180%;
-    word-spacing: 2px;
     text-align: center;
     margin-bottom: 80px;
-    letter-spacing: 1px;
 }
 
 h2:after {
@@ -165,22 +162,49 @@ h2:after {
     margin-top: 10px;
 }
 
+h2.result-title {
+    color: rgb(134, 133, 133);
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 130%;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+h2.result-title:after{
+    display: none;
+}
+
+
 h3 {
-    color:rgb(134, 133, 133);
+    color: #BA5E0B;
     font-size: 100%;
-    font-weight: 300;
-    text-transform: uppercase;
+    font-weight: 400;
+    opacity: 70%;
+    text-transform: capitalize;
+    margin-top: 20px;
+    margin-bottom: 20px;
     
 }
 
-p {
-    color: grey;
+p 
+{color: #3E1D00;
     font-size: 80%;
     line-height: 150%;
-    font-weight: 300;
-    font-family: sans-serif;
+    font-weight: 330;
 }
 
+
+p.physdesc,
+p.type,
+p.collection {
+    color: #3E1D00;
+    font-size: 80%;
+    line-height: 150%;
+    font-weight: 330;
+
+}
 
 label {
     color:whitesmoke;
@@ -190,7 +214,7 @@ label {
 }
 
 div.section {
-    border: 1px solid rgb(4, 79, 83);
+    border: 2px solid #EB6F02;
     border-bottom: none;
 
 }
@@ -205,11 +229,14 @@ div.section {
     border: 1px solid #ddd;
     border-radius: 100px;
     margin-top: 20px;
-    margin-bottom: 30px;
-    
+    margin-bottom: 30px; 
 }
 
-path {
+#search-icon {
+    position: relative;
+    z-index: 1;
+    left: -50px;
+    top: 1px;
     color: #e67e22;
 }
 
@@ -317,3 +344,4 @@ button,
 	float:left;
 	/* margin: 1% 0 1% 1.6%; */
 }
+
