@@ -137,7 +137,8 @@ h2:after {
 h3 {
     color:rgb(134, 133, 133);
     font-size: 100%;
-    font-weight: 800;
+    font-weight: 300;
+    text-transform: uppercase;
 }
 
 p {
@@ -229,6 +230,7 @@ path {
 
 /*IMAGES*/
 
+
 .imageone{
     max-width: 100%;
     height: auto;
@@ -291,29 +293,8 @@ input[type=submit] {
     color: #fff;
 }
 
-
-/* responsive grid system */
-
-/*  GRID OF THREE  */
-
-.span_3_of_3 {
-    width: 100%;
-}
-
-.span_2_of_3 {
-    width: 66%;
-}
-
-.span_1_of_3 {
-    width: 32%;
-}
-
-/*  GO FULL WIDTH BELOW 480 PIXELS */
-@media only screen and (max-width: 480px) {
-    .col {
-        margin: 1% 0 1% 0%;
-    }
-    .span_3_of_3, .span_2_of_3, .span_1_of_3 {
-        width: 100%;
-    }
+.col-span-1-of-2 {
+	display: block;
+	float:left;
+	/* margin: 1% 0 1% 1.6%; */
 }
