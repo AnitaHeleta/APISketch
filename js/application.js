@@ -1,10 +1,11 @@
 function displayData(apiData) {
+    $('.explore').hide();
     if (apiData.data.length === 0) {
         $('.item-container').empty();
         $('.item-container').append('<p>No Results found</p>');
         return;
     }
-    var chunkedResults = _.chunk(apiData.data, 3)
+    var chunkedResults = _.chunk(apiData.data, 4)
     for (const resultsChunk of chunkedResults) {
         var section = buildSection(resultsChunk);
         $('.item-container').append(section);
@@ -23,7 +24,7 @@ function buildSection(results){
 }
 
 function buildIndividualResult(r) {
-    var item = $(`<div class="item col span_1_of_3">
+    var item = $(`<div class="col span-1-of-4 box">
             <h2>${r.title}</h2>
             <h3>Description</h3>
             <p class="physdesc">${r.physicalDescription}</p>

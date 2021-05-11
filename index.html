@@ -2,9 +2,11 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="vendors/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./css/vendors/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./css/vendors/grid.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/underscore@1.12.1/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
@@ -18,12 +20,12 @@
 
         <nav class="sticky">
             <div class="row">
-                <img src="./images/National-Museum-of-Australia-Logo-Font.jpg" alt="National-Museum-of-Australia-Logo-Font"
-            class="logo">
-                
+                <img src="./images/National-Museum-of-Australia-Logo-Font.jpg"
+                    alt="National-Museum-of-Australia-Logo-Font" class="logo">
+
                 <ul class="main-nav">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Explore</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Explore</a></li>    
                     <li><a href="#">On The Map</a></li>
                 </ul>
 
@@ -32,67 +34,51 @@
         <div class="hero-text-box">
             <h1>The <br>Dreamtime <br>Collection</h1>
 
-                      
-            <input type="text" id="myInput" placeholder="please enter your search and press enter..."><i class="fas fa-search"></i>  <br>
+
+            <input type="text" id="myInput" placeholder="please enter your search and press enter..."><i
+                class="fas fa-search"></i> <br>
             <input type="radio" id="title" name="searchBy" value="title" checked>
             <label for="title">by title</label>
             <input type="radio" id="collection" name="searchBy" value="collection">
             <label for="collection">by collection</label>
             <button onclick="findNearMe()">Find Near Me</button>
 
-         </div>
+        </div>
 
     </header>
-
-    <div class="item-container">
-    </div>
-
     <section class="section-explore">
-        <div class="row">
-            <h2>Explore</h2>
+        <div class="row item-container">
         </div>
-        <div class="row">
-                <div class="col span-1-of-3">
-                    <div class="explore-box">
-                        <div>
-                            <h3>Paintings</h3>
-                            </div>
-                        <div>
-                        
-                        <img src="./images/Aboriginal-Art-People.jpg" alt="Aboriginal Art People" class="imageone">
-
-                       </div>
-                        <div>
-                            <a href="#" class="btn btn-full">Enter</a>
-                        </div>
+        <div class="row explore">
+            <h2>Explore</h2>
+            <div class="col span-1-of-3">
+                <div class="explore-box">
+                    <div>
+                        <h3>Paintings</h3>
                     </div>
-                </div>
-                <div class="col span-1-of-3">
-                    <div class="explore-box">
-                        <div>
-                            <h3>Drawings</h3>
-                        </div>
-                        <div>
-                            <img src="./images/Aboriginal-Art-People.jpg" alt="Aboriginal Art People" class="imagetwo">
-                         </div>
-                        <div>
-                         <a href="#" class="btn btn-ghost">Enter</a>
-                        </div>
+                    <div>
+                        <img src="./images/Aboriginal-Art-People.jpg" alt="Aboriginal Art People" class="imageone">
+                    </div>
+                    <div>
+                        <a href="#" class="btn btn-full">Enter</a>
                     </div>
                 </div>
             </div>
+            <div class="col span-1-of-3">
+                <div class="explore-box">
+                    <div>
+                        <h3>Drawings</h3>
+                    </div>
+                    <div>
+                        <img src="./images/Aboriginal-Art-People.jpg" alt="Aboriginal Art People" class="imagetwo">
+                    </div>
+                    <div>
+                        <a href="#" class="btn btn-ghost">Enter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-            
-    <section class="section-map">
-        <div class="row">
-        <h2>On the Map</h2>
-        <div class="row">
-
-        </div> 
-    </section>
-    
 </body>
-
-
 
 </html>
