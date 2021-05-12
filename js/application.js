@@ -119,15 +119,19 @@ function findNearMe() {
     searchByLocation(suburb, city)
 }
 
+function performSearch(searchQuery){
+    var searchBy = $("input[name='searchBy']:checked").val();
+    if (searchBy === 'title') {
+        searchByTitle(searchQuery);
+    } else if (searchBy === 'collection') {
+        searchByCollection(searchQuery);
+    }
+}
+
 $(document).on("keypress", "input", function (e) {
     if (e.key == 'Enter') {
-        var searchBy = $("input[name='searchBy']:checked").val();
         var searchQuery = $(this).val();
-        if (searchBy === 'title') {
-            searchByTitle(searchQuery);
-        } else if (searchBy === 'collection') {
-            searchByCollection(searchQuery);
-        }
+        performSearch(searchQuery);
     }
 });
 
@@ -137,4 +141,17 @@ $(document).ready(function () {
             getLocationName(pos.coords.latitude, pos.coords.longitude)
         });
     }
+    
+    var suggestions = [
+        { value: 'Tennis', data: 'tennis' },
+        { value: 'Canoe', data: 'canoe' }
+    ];
+    
+    $('#myInput').autocomplete({
+        lookup: suggestions,
+        onSelect: function (suggestion) {
+            performSearch(suggestion.data);
+        }
+    });
 });
+
