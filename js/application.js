@@ -16,8 +16,8 @@ function displayData(apiData) {
     }
 }
 
-function buildSection(results){
-    var s =  $('<div class="section">');
+function buildSection(results) {
+    var s = $('<div class="section">');
     var items = _.map(results, buildIndividualResult);
     s.append(items);
     return s;
@@ -35,7 +35,7 @@ function buildIndividualResult(r) {
         </div>`);
 
     if (r.significanceStatement) {
-        item.append('<h3>Significance Statement</h3> <p>' + r.significanceStatement + '</p>');
+        item.append(`<h3>Significance Statement</h3> ${paragraphWithReadMore(r.significanceStatement)}`);
     };
 
     if (r.acknowledgement) {
@@ -51,6 +51,23 @@ function buildIndividualResult(r) {
         item.append('<img src="' + thumbnail + '" class="thumbnail">');
     }
     return item;
+}
+
+function paragraphWithReadMore(value) {
+    const carLmt = 280;
+    if (value.length > carLmt) {
+        const readMoreTxt = " ... Read More";
+        const readLessTxt = " Read Less";
+        const firstSet = value.substring(0, carLmt);
+        const secdHalf = value.substring(carLmt, value.length);
+        return `<p class="addReadMore showlesscontent">
+            ${firstSet}
+            <span class='SecSec'>${secdHalf}</span>
+            <span class='readMore' title='Click to Show More'>${readMoreTxt}</span>
+            <span class='readLess' title='Click to Show Less'>${readLessTxt}</span>
+        </p>`;
+    }
+    return `<p>${value}</p>`;
 }
 
 function extractStartDate(row) {
@@ -119,13 +136,37 @@ function findNearMe() {
     searchByLocation(suburb, city)
 }
 
-function performSearch(searchQuery){
+function performSearch(searchQuery) {
     var searchBy = $("input[name='searchBy']:checked").val();
     if (searchBy === 'title') {
         searchByTitle(searchQuery);
     } else if (searchBy === 'collection') {
         searchByCollection(searchQuery);
     }
+}
+
+function fetchGeoLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (pos) {
+            getLocationName(pos.coords.latitude, pos.coords.longitude)
+        });
+    }
+}
+
+function setupSuggestionForSearch() {
+    var suggestions = [
+        { value: 'Tennis', data: 'tennis' },
+        { value: 'Canoe', data: 'canoe' },
+        { value: 'Aboriginal', data: 'aboriginal' },
+        { value: 'Indigenous', data: 'indigenous' }
+    ];
+
+    $('#myInput').autocomplete({
+        lookup: suggestions,
+        onSelect: function (suggestion) {
+            performSearch(suggestion.data);
+        }
+    });
 }
 
 $(document).on("keypress", "input", function (e) {
@@ -135,23 +176,11 @@ $(document).on("keypress", "input", function (e) {
     }
 });
 
-$(document).ready(function () {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (pos) {
-            getLocationName(pos.coords.latitude, pos.coords.longitude)
-        });
-    }
-    
-    var suggestions = [
-        { value: 'Tennis', data: 'tennis' },
-        { value: 'Canoe', data: 'canoe' }
-    ];
-    
-    $('#myInput').autocomplete({
-        lookup: suggestions,
-        onSelect: function (suggestion) {
-            performSearch(suggestion.data);
-        }
+$(function () {
+    fetchGeoLocation();
+    setupSuggestionForSearch();
+    $(document).on("click", ".readMore,.readLess", function () {
+        $(this).closest(".addReadMore").toggleClass("showlesscontent showmorecontent");
     });
 });
 
