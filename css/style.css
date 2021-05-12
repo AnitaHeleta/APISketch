@@ -347,12 +347,12 @@ button,
 
 
 /* Autocomplete Sty */
-.autocomplete-suggestions { background: #ddd; overflow: auto; }
+.autocomplete-suggestions { background: #F0EAD6; overflow: auto; border-radius: 8px;}
 .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
-.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-selected { background: #fff; }
 .autocomplete-suggestions strong { color: #e67e22;}
-.autocomplete-group { padding: 2px 5px; }
-.autocomplete-group strong { display: block; border-bottom: 0.5px solid #ecbc92; }
+.autocomplete-group { padding: 4px 5px; }
+.autocomplete-group strong { display: block; border-bottom: 0.5px solid #fff; }
 
 
 /*Read more Show Less*/
@@ -368,10 +368,14 @@ button,
 
 .addReadMore .readMore,
 .addReadMore .readLess {
-    font-weight: bold;
+    font-weight: 300;
+    font-size:small;
     margin-left: 2px;
-    color: blue;
+    color: #fff;
     cursor: pointer;
+    border-radius: 5px;
+    padding: 2px;
+    background-color: #e67e22;
 }
 
 .addReadMoreWrapTxt.showmorecontent .SecSec,
