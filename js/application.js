@@ -94,7 +94,7 @@ function loadDataFrom(path) {
 
 function searchByTitle(query) {
     $('.item-container').empty();
-    var path = getObjectPath(`text=${query}`);
+    var path = getObjectPath(`title=${query}`);
     loadDataFrom(path)
 }
 
@@ -110,8 +110,14 @@ function searchByLocation(suburb, city) {
     loadDataFrom(path)
 }
 
+function searchByType(type){
+    $('.item-container').empty();
+    var path = getObjectPath(`additionalType=${type}`);
+    loadDataFrom(path)
+}
+
 function getObjectPath(query) {
-    return `object?limit=51&format=simple&apikey=4SDwv6pd4DyiBrJ5xu2PnVUmaLhIogIk&${query}`
+    return `object?text=aboriginal&limit=51&format=simple&apikey=4SDwv6pd4DyiBrJ5xu2PnVUmaLhIogIk&${query}`
 }
 
 function getLocationName(lat, long) {
@@ -158,7 +164,8 @@ function setupSuggestionForSearch() {
         { value: 'Tennis', data: 'tennis' },
         { value: 'Canoe', data: 'canoe' },
         { value: 'Aboriginal', data: 'aboriginal' },
-        { value: 'Indigenous', data: 'indigenous' }
+        { value: 'Indigenous', data: 'indigenous' },
+        { value: 'Torres Strait Islander', data: 'Torres Strait Islander'}
     ];
 
     $('#myInput').autocomplete({
