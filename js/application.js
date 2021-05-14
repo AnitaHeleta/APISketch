@@ -1,3 +1,4 @@
+var map;
 function displayData(apiData) {
     $('.explore').hide();
     if (apiData.data.length === 0) {
@@ -50,6 +51,12 @@ function buildIndividualResult(r) {
     if (thumbnail) {
         item.append('<img src="' + thumbnail + '" class="thumbnail">');
     }
+    var geo = extractGeo(r);
+    if (geo) {
+        L.marker(geo.split(",")).addTo(map).bindPopup(r.title).openPopup();
+        
+    }
+
     return item;
 }
 
@@ -78,6 +85,14 @@ function extractStartDate(row) {
     return undefined;
 }
 
+function extractGeo(row) {
+    if (row.spatial) {
+        var geo = _.filter(row.spatial, row.geo)
+        return geo ? geo[0].geo : undefined
+    }
+    return undefined;
+}
+
 function extractThumbnail(row) {
     if (row.hasVersion) {
         var images = _.findWhere(row.hasVersion, { type: "StillImage" })
@@ -94,6 +109,9 @@ function loadDataFrom(path) {
 
 function searchByTitle(query) {
     $('.item-container').empty();
+    map.eachLayer(function (layer) {
+        map.removeLayer(layer);
+    });
     var path = getObjectPath(`title=${query}`);
     loadDataFrom(path)
 }
@@ -110,7 +128,7 @@ function searchByLocation(suburb, city) {
     loadDataFrom(path)
 }
 
-function searchByType(type){
+function searchByType(type) {
     $('.item-container').empty();
     var path = getObjectPath(`additionalType=${type}`);
     loadDataFrom(path)
@@ -165,7 +183,7 @@ function setupSuggestionForSearch() {
         { value: 'Canoe', data: 'canoe' },
         { value: 'Aboriginal', data: 'aboriginal' },
         { value: 'Indigenous', data: 'indigenous' },
-        { value: 'Torres Strait Islander', data: 'Torres Strait Islander'}
+        { value: 'Torres Strait Islander', data: 'Torres Strait Islander' }
     ];
 
     $('#myInput').autocomplete({
@@ -190,18 +208,14 @@ $(function () {
         $(this).closest(".addReadMore").toggleClass("showlesscontent showmorecontent");
     });
 
-    var mymap = L.map('mapid').setView([-26.289033, 134.605947], 5)
-
+    map = L.map('mapid').setView([-26.289033, 134.605947], 5)
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoiaGFuaXRhIiwiYSI6ImNrb282cGtlbzAxdmwydW9qeTRlYmF6aHIifQ.tgxopbicQoMcjq0E1BXHiQ'
-}).addTo(mymap);
-
-
-
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoiaGFuaXRhIiwiYSI6ImNrb282cGtlbzAxdmwydW9qeTRlYmF6aHIifQ.tgxopbicQoMcjq0E1BXHiQ'
+    }).addTo(map);
 });
 
