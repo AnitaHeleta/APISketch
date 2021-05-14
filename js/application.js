@@ -109,15 +109,17 @@ function loadDataFrom(path) {
 
 function searchByTitle(query) {
     $('.item-container').empty();
-    map.eachLayer(function (layer) {
-        map.removeLayer(layer);
-    });
     var path = getObjectPath(`title=${query}`);
     loadDataFrom(path)
 }
 
 function searchByCollection(query) {
     $('.item-container').empty();
+    map.eachLayer(function (layer) {
+        if(layer.options.id === "mapbox/streets-v11") return;
+        console.log(layer)
+        map.removeLayer(layer);
+    });
     var path = getObjectPath(`collection=${query}`);
     loadDataFrom(path)
 }
