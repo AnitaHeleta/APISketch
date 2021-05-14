@@ -383,6 +383,52 @@ button,
     display: block;
 }
 
+
 /*MAP*/
 
 #mapid { height: 500px; }
+
+
+/* -------------------------------------*/
+/* FOOTER */
+/* -------------------------------------*/
+
+footer {
+    background-color: rgb(39, 37, 37);
+    padding: 40px;
+    font-size: 80%;
+}
+
+.footer-nav {
+    list-style: none;
+    float: left;
+}
+
+.footer-nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer-nav li:last-child {
+    margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited {
+    text-decoration: none;
+    border: 0;
+    color: rgb(204, 201, 201);
+    transition: color 0.2s;
+
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+    color: #e67e22;
+}
+
+footer p {
+    color: rgb(253, 234, 234);
+    text-align: center;
+    margin-top: 20px;
+}
