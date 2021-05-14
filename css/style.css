@@ -382,3 +382,7 @@ button,
 .addReadMoreWrapTxt.showmorecontent .readLess {
     display: block;
 }
+
+/*MAP*/
+
+#mapid { height: 500px; }
