@@ -5,18 +5,18 @@
 
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
     <link rel="stylesheet" type="text/css" href="./css/vendors/normalize.css">
     <link rel="stylesheet" type="text/css" href="./css/vendors/grid.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/underscore@1.12.1/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-    
+
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="./js/jquery-autocomplete.js"></script>
     <script src="./js/application.js"></script>
@@ -34,7 +34,6 @@
                 <ul class="main-nav">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#explore">Explore</a></li>
-                    <li><a href="#map">On The Map</a></li>
                 </ul>
 
             </div>
@@ -42,7 +41,7 @@
 
         <div class="hero-text-box">
             <h1>The <br>Dreamtime <br>Collection</h1>
-            <input type="text" id="myInput" placeholder="please enter your search and press enter...">
+            <input type="text" id="myInput" class="search" placeholder="please enter your search and press enter...">
             <i id="search-icon" class="fas fa-search"></i>
             <br>
             <input type="radio" id="title" name="searchBy" value="title" checked>
@@ -53,10 +52,15 @@
 
         </div>
     </header>
-    <section id="explore" class="section-explore">
+    <section id="map" class="section-map">
+        <div class="row map">
+            <div id="mapid"></div>
+        </div>
+    </section>
+    <section  class="section-explore">
         <div class="row item-container">
         </div>
-        <div class="row explore">
+        <div id="explore" class="row explore">
             <h2>Explore</h2>
             <div class="col span-1-of-2">
                 <div class="explore-box">
@@ -81,43 +85,20 @@
             </div>
         </div>
     </section>
-    <section id="map" class="section-map">
-        <div class="row map">
-            <h2> On the map</h2>
-        <div id="mapid"></div>
-        <div>
-            <input type="text" id="myInput" placeholder="please enter your search and press enter...">
-            <i id="search-icon" class="fas fa-search"></i>
-            <br>
-            <input type="radio" id="titl" name="searchBy" value="title" checked>
-            <label for="title" class="titlemap">by title</label>
-             <input type="radio" id="collection" name="searchBy" value="collection">
-            <label for="collection" class="collectionmap">by collection</label>
-             <button onclick="findNearMe()">find near me</button>
-            </div>
-        </div>
-    </section>
-
     <footer>
         <div class="row">
             <div class="col span-1-of-2">
                 <ul class="footer-nav">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#explore">Explore</a></li>
-                    <li><a href="#map">On The Map</a></li>
                 </ul>
             </div>
-            
+
         </div>
         <div class="row">
             <p> Project by U3148005 - University of Canberra Australia</p>
         </div>
-
-
     </footer>
-
-
-
 </body>
 
 </html>

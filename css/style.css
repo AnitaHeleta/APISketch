@@ -224,7 +224,7 @@ div.section {
 
 }
 
-#myInput {
+.search {
     width: 50%;
     position: relative;
     font-weight: lighter;
@@ -352,14 +352,14 @@ button,
 
 
 /* Autocomplete Sty */
-.autocomplete-suggestions { background: #F0EAD6; overflow: auto; border-radius: 8px;}
+.autocomplete-suggestions { background: rgb(241, 218, 175); overflow: auto; border-radius: 8px;}
 .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
-.autocomplete-selected { background: #fff; }
+.autocomplete-selected { background: rgb(241, 179, 63); }
 .autocomplete-suggestions strong { color: #e67e22;}
 .autocomplete-group { padding: 4px 5px; }
 .autocomplete-group strong { display: block; border-bottom: 0.5px solid #fff; }
 
-
+    
 /*Read more Show Less*/
 
 .addReadMore.showlesscontent .SecSec,

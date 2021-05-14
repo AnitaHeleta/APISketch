@@ -1,8 +1,7 @@
 var map;
 function displayData(apiData) {
-    $('.explore').hide();
     if (apiData.data.length === 0) {
-        $('.item-container').empty();
+        clearAll();
         $('.item-container').append('<p>No Results found</p>');
         return;
     }
@@ -54,7 +53,7 @@ function buildIndividualResult(r) {
     var geo = extractGeo(r);
     if (geo) {
         L.marker(geo.split(",")).addTo(map).bindPopup(r.title).openPopup();
-        
+
     }
 
     return item;
@@ -108,15 +107,15 @@ function loadDataFrom(path) {
 }
 
 function searchByTitle(query) {
-    $('.item-container').empty();
+    clearAll();
     var path = getObjectPath(`title=${query}`);
     loadDataFrom(path)
 }
 
 function searchByCollection(query) {
-    $('.item-container').empty();
+    clearAll();
     map.eachLayer(function (layer) {
-        if(layer.options.id === "mapbox/streets-v11") return;
+        if (layer.options.id === "mapbox/streets-v11") return;
         console.log(layer)
         map.removeLayer(layer);
     });
@@ -125,15 +124,24 @@ function searchByCollection(query) {
 }
 
 function searchByLocation(suburb, city) {
-    $('.item-container').empty();
+    clearAll();
     var path = getObjectPath(`spatial=${suburb}&spatial=${city}`);
     loadDataFrom(path)
 }
 
 function searchByType(type) {
-    $('.item-container').empty();
+    clearAll();
     var path = getObjectPath(`additionalType=${type}`);
     loadDataFrom(path)
+}
+
+function clearAll(){
+    $('.item-container').empty();
+    map.eachLayer(function (layer) {
+        if (layer.options.id === "mapbox/streets-v11") return;
+        console.log(layer)
+        map.removeLayer(layer);
+    });
 }
 
 function getObjectPath(query) {
@@ -185,7 +193,11 @@ function setupSuggestionForSearch() {
         { value: 'Canoe', data: 'canoe' },
         { value: 'Aboriginal', data: 'aboriginal' },
         { value: 'Indigenous', data: 'indigenous' },
-        { value: 'Torres Strait Islander', data: 'Torres Strait Islander' }
+        { value: 'Torres Strait Islander', data: 'torres strait islander' },
+        { value: 'Bark', data: 'bark' },
+        { value: 'Dreaming', data: 'dreaming' },
+        { value: 'Boomerang', data: 'boomerang' },
+        { value: 'Lizard', data: 'lizard' }
     ];
 
     $('#myInput').autocomplete({
