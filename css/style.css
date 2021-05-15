@@ -252,6 +252,7 @@ div.section {
     font-style: italic;
     line-height: 150%;
     font-size: 150%;;
+    margin-top: 40px;
 }
 
 .section-about::after{
@@ -289,12 +290,7 @@ div.section {
     border: 0;
 }
 
-
-/*ON THE MAP SECTION*/
-
-
 /*IMAGES*/
-
 
 .imageone{
     max-width: 100%;
@@ -412,7 +408,7 @@ button,
 
 /*MAP*/
 
-#mapid { height: 500px; }
+#mapid { height: 600px; }
 
 
 /* -------------------------------------*/
