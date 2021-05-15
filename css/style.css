@@ -245,6 +245,27 @@ div.section {
     color: #e67e22;
 }
 
+.section-about {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 150%;
+    font-size: 150%;;
+}
+
+.section-about::after{
+    display: block;
+    height: 2px;
+    background-color: #e67e22;
+    content: " ";
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+
+
 /*EXPLORE SECTION*/
 
 .section-explore {
