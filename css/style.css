@@ -19,17 +19,7 @@ body {
     font-family: 'Lato', 'Arial', sans-serif;
 }
 
-.clearfix {
-    zoom: 1
-}
 
-.clearfix:after {
-    content: '-';
-    clear: both;
-    display: block;
-    height: 0;
-    visibility: hidden;
-}
 /* -------------------------------------*/
 /* RESUABLE COMPONENTS */
 /* -------------------------------------*/
@@ -77,6 +67,10 @@ header {
     margin: 5px 0;
 }
 
+/*.....................................*/
+/* MAIN NAVIGATION */
+/* -------------------------------------*/
+
 .main-nav {
     float: right;
     list-style: none;
@@ -108,6 +102,7 @@ header {
 }
 
 /*sticky nav*/
+
 .sticky {
     position: fixed;
     top: 0;
@@ -188,13 +183,16 @@ h3 {
     
 }
 
-p 
-{color: #3E1D00;
+/* -------------------------------------*/
+/* BODY */
+/* -------------------------------------*/
+
+p {
+    color: #3E1D00;
     font-size: 80%;
     line-height: 150%;
     font-weight: 330;
 }
-
 
 p.physdesc,
 p.type,
@@ -245,6 +243,10 @@ div.section {
     color: #e67e22;
 }
 
+/*--------------------------------------*/
+/* SECTION MEANING ABORIGINAL */
+/* -------------------------------------*/
+
 .section-about {
     text-transform: uppercase;
     text-align: center;
@@ -265,13 +267,19 @@ div.section {
     margin-top: 10px;
 }
 
+/* -------------------------------------*/ 
+/* RESULT CONTAINER */
+/* -------------------------------------*/
 
+.row.item-container {
+    margin-bottom: 80px;
 
-/*EXPLORE SECTION*/
-
-.section-explore {
-    background-color:#f5f5f5;
 }
+
+/* -------------------------------------*/ 
+/* EXPLORE SECTION */
+/* -------------------------------------*/
+
 
 .explore-box {
     border-radius: 5 px;
@@ -289,8 +297,9 @@ div.section {
     text-align: center;
     border: 0;
 }
-
-/*IMAGES*/
+/* -------------------------------------*/ 
+/* IMAGES */
+/* -------------------------------------*/
 
 .imageone{
     max-width: 100%;
@@ -305,8 +314,9 @@ div.section {
 }
 
 
-
-/*BUTTON*/
+/* -------------------------------------*/ 
+/* BUTTONS */
+/* -------------------------------------*/
 
 button,
 .btn:link,
@@ -367,8 +377,10 @@ button,
 	/* margin: 1% 0 1% 1.6%; */
 }
 
+/* -------------------------------------*/ 
+/* AUTOCOMPLETE SUGGESTIONS */
+/* -------------------------------------*/
 
-/* Autocomplete Sty */
 .autocomplete-suggestions { background: rgb(241, 218, 175); overflow: auto; border-radius: 8px;}
 .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: rgb(241, 179, 63); }
@@ -377,7 +389,9 @@ button,
 .autocomplete-group strong { display: block; border-bottom: 0.5px solid #fff; }
 
     
-/*Read more Show Less*/
+/* -------------------------------------*/ 
+/* READ MORE READ LESS */
+/* -------------------------------------*/
 
 .addReadMore.showlesscontent .SecSec,
 .addReadMore.showlesscontent .readLess {
@@ -406,7 +420,9 @@ button,
 }
 
 
-/*MAP*/
+/* -------------------------------------*/ 
+/* MAP */
+/* -------------------------------------*/
 
 #mapid { height: 600px; }
 
